@@ -1,0 +1,31 @@
+<configuration>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoders are assigned the type
+             ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="KINESIS" class="com.gu.logback.appender.kinesis.KinesisAppender">
+        <bufferSize>1000</bufferSize>
+        <threadCount>20</threadCount>
+<!--        <endpoint>kinesis.eu-west-2.amazonaws.com</endpoint>&lt;!&ndash; Specify endpoint OR region &ndash;&gt;-->
+        <region>eu-west-2</region>
+<!--        <roleToAssumeArn>foo</roleToAssumeArn>&lt;!&ndash; Optional: ARN of role for cross account access &ndash;&gt;-->
+        <maxRetries>3</maxRetries>
+        <shutdownTimeout>30</shutdownTimeout>
+        <streamName>HackathonCWToKinesisStream</streamName>
+        <encoding>UTF-8</encoding>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%m</pattern>
+        </layout>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="KINESIS"/>
+    </root>
+
+</configuration>
