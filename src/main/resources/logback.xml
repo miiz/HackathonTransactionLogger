@@ -16,7 +16,7 @@
 <!--        <roleToAssumeArn>foo</roleToAssumeArn>&lt;!&ndash; Optional: ARN of role for cross account access &ndash;&gt;-->
         <maxRetries>3</maxRetries>
         <shutdownTimeout>30</shutdownTimeout>
-        <streamName>HackathonCWToKinesisStream</streamName>
+        <streamName>HackathonCWToKinesisStream2</streamName>
         <encoding>UTF-8</encoding>
         <layout class="ch.qos.logback.classic.PatternLayout">
             <pattern>%m</pattern>
